@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">	
+    <title>Test Score App</title>
+	<link rel="stylesheet" href="css/score.css">
+	<script>
+		var processEntries = function() {
+            
+            // Input reading. Get all three scores provided by the user
+            var score1 = document.getElementById("score1").value;
+			score1 = parseFloat(score1);
+            var score2 = document.getElementById("score2").value;
+			score2 = parseFloat(score2);
+			var score3 = document.getElementById("score3").value;
+			score3 = parseFloat(score3);
+            
+            // Constraint verification. Scores must be numeric and between 0 and 100
+            if ( isNaN(score1) || isNaN(score2) || isNaN(score3) ) {
+                alert("All three entries must be numeric");
+            }
+            else if ( score1 < 0 || score1 > 100 || score2 < 0 || score2 > 100 || score3 < 0 || score3 > 100 ) {
+            	alert("All three entries must be between 0 and 100");
+            }
+            else {
+            	document.getElementById("scoreTotal").value = (score1 + score2 + score3).toFixed(2);
+             	document.getElementById("scoreAvg").value = ((score1 + score2 + score3) / 3).toFixed(2);
+            }
+
+        };
+		
+		window.onload = function() {
+			document.getElementById("calculate").onclick = processEntries;
+			document.getElementById("score1").focus();
+        };
+	</script>
+ 	
+</head>
+<body>
+	<main>
+		<h2>The Test Scores App</h2>
+		<label for="score1">Enter 1st test score:</label>
+		<input type='text' id='score1'/><br>
+		<label for="score2">Enter 2nd test score:</label>
+		<input type='text' id='score2'/><br>
+		<label for="score3">Enter 3rd test score:</label>
+		<input type="text" id='score3'/><br>
+		<label for="scoreTotal">Total Score:</label>
+		<input type="text" id="scoreTotal" disabled><br>
+		<label for="scoreAvg">Average Score:</label>
+		<input type="text" id="scoreAvg" disabled><br>
+		<label>&nbsp;</label>
+		<input type="button" id="calculate" value="Calculate">
+	</main>
+    <p>Thanks for using the Test Scores Application!</p>
+</body>
+</html>
