@@ -29,6 +29,7 @@ var processEntries = function() {
         $("scoreFinal").value = results[1];
     }
     else {
+        // There is some error with the input. The output fields should be erased
         $("scoreTotal").value = "";
         $("scoreFinal").value = "";
     }
