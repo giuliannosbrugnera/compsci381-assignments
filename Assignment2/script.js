@@ -28,6 +28,10 @@ var processEntries = function() {
         $("scoreTotal").value = results[0];
         $("scoreFinal").value = results[1];
     }
+    else {
+        $("scoreTotal").value = "";
+        $("scoreFinal").value = "";
+    }
 
 };
 
