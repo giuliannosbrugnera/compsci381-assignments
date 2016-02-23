@@ -3,39 +3,12 @@
 <head>
     <meta charset="UTF-8">	
     <title>Test Score App</title>
-	<link rel="stylesheet" href="score.css">
- 	<!--remove the following embedded script to external and then include external js file here -->
-	<script>
-		"use strict";
-		var $ = function(id) { return document.getElementById(id); };
-
-		var processEntries = function() {
-            var score1 = parseInt($("score1").value);
-		    var score2 = parseInt($("score2").value);
-			var score3 = parseInt($("score3").value);
 	
-			var message ="";
-			var totalscore, finalgrade;
-			
-			//modify the following data validation code to do validate for each test score
-            if (isNaN(score1) || isNaN(score2)|| isNaN(score3)) {
-                alert("All entries must be numeric!");
-            } 
-			else if (score1<0 || score1>100 || score2 <0 || score2>100 || score3 <0 || score3>100 )
-			{
-				message = 'All the test scores should be between 0 and 100!';
-				alert(message);
-			}
+	<!-- Link to the external CSS file  -->
+	<link rel="stylesheet" href="score.css">
 
-	        // call calculateFinalGrade function here and display the results 
-            
-        };
-		
-		window.onload = function() {
-			$("calculate").onclick = processEntries;
-			$("score1").focus();
-        };
-	</script>
+	<!-- Link to the external JavaScript file -->
+	<script src="script.js"></script>
 </head>
 <body>
 	<main>
@@ -49,7 +22,7 @@
 		<span id="score2_error">&nbsp;</span><br>
 		<label for="score3">Test-3:</label>
 		<input type="text" id='score3'/>
-		<span id="score2_error">&nbsp;</span><br>
+		<span id="score3_error">&nbsp;</span><br>
 		<label for="scoreTotal">Total Points:</label>
 		<input type="text" id="scoreTotal" disabled><br>
 		<label for="scoreFinal">Final Grade:</label>
