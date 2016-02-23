@@ -8,20 +8,40 @@ var processEntries = function() {
 
 	var message ="";
 	var totalscore, finalgrade;
-	
-	//modify the following data validation code to do validate for each test score
-    if (isNaN(score1) || isNaN(score2)|| isNaN(score3)) {
-        alert("All entries must be numeric!");
-    } 
-	else if (score1<0 || score1>100 || score2 <0 || score2>100 || score3 <0 || score3>100 )
-	{
-		message = 'All the test scores should be between 0 and 100!';
-		alert(message);
-	}
+
+	$("score1_error").innerHTML = checkConstraints( score1 );
+	$("score2_error").innerHTML = checkConstraints( score2 );
+	$("score3_error").innerHTML = checkConstraints( score3 );
 
     // call calculateFinalGrade function here and display the results 
     
 };
+
+/*
+ * checkConstraints
+ * Create a error message based on the 'score' value
+ *
+ * @param score input provided by the user
+ * @returns created error message. It will be empty if the input is correct
+ * 
+ */
+function checkConstraints( score ) {
+
+	var errorMessage = "";
+	
+	if ( score.value.lenght === 0 ) {
+		errorMessage = "Test-" + option + " must be non-empty!"
+	}
+	else if ( isNaN(score) ) {
+		errorMessage = "Test-" + option + " must be a non-negative number!";
+	}
+	else if ( score < 0 || score > 100 ) {
+		errorMessage = "Test-" + option + " must be non-negative!";
+	}
+	
+	return errorMessage;
+
+}
 
 window.onload = function() {
 	$("calculate").onclick = processEntries;
