@@ -54,7 +54,7 @@ function checkConstraints( score ) {
  */
 function calculateFinalGrade( score1, score2, score3 ) {
 	
-	var results[];
+	var results = [];
 	results[0] = score1 + score2 + score3;
 
 	if ( results[0] >= 270 ) {
