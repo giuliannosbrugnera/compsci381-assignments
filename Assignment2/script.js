@@ -35,12 +35,19 @@ function checkConstraints( score ) {
 	else if ( isNaN(score) ) {
 		errorMessage = "Test-" + option + " must be a non-negative number!";
 	}
-	else if ( score < 0 || score > 100 ) {
+	else if ( score < 0 ) {
 		errorMessage = "Test-" + option + " must be non-negative!";
+	}
+	else if ( score > 100 ) {
+		errorMessage = "Test-" + option + " must be in the closed interval [0, 100].";	
 	}
 	
 	return errorMessage;
 
+}
+
+function calculateFinalGrade(  ) {
+	// body...
 }
 
 window.onload = function() {
