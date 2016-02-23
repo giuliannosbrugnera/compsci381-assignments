@@ -8,10 +8,12 @@ var $ = function(id) { return document.getElementById(id); };
  */
 var processEntries = function() {
 
+    // Variables declaration. Parsing a string to a integer is necessary
     var score1 = parseInt($("score1").value);
     var score2 = parseInt($("score2").value);
     var score3 = parseInt($("score3").value);
 
+    // Function call based on each input provided, creating an error message if necessary
     $("score1_error").textContent = checkConstraints( score1, 1 );
     $("score2_error").textContent = checkConstraints( score2, 2 );
     $("score3_error").textContent = checkConstraints( score3, 3 );
