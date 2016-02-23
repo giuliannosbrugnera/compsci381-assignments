@@ -1,18 +1,31 @@
 "use strict";
 var $ = function(id) { return document.getElementById(id); };
 
+/*
+ * processEntries
+ * Process all the entries provided via standard input
+ * 
+ */
 var processEntries = function() {
 
     var score1 = parseInt($("score1").value);
     var score2 = parseInt($("score2").value);
     var score3 = parseInt($("score3").value);
 
-    $("score1_error").innerHTML = checkConstraints( score1, 1 );
-    $("score2_error").innerHTML = checkConstraints( score2, 2 );
-    $("score3_error").innerHTML = checkConstraints( score3, 3 );
+    $("score1_error").textContent = checkConstraints( score1, 1 );
+    $("score2_error").textContent = checkConstraints( score2, 2 );
+    $("score3_error").textContent = checkConstraints( score3, 3 );
 
-    var results = calculateFinalGrade( score1, score2, score3 );
+    if ( ($("score1_error").textContent.length === 0) && ($("score2_error").textContent.length === 0) && ($("score3_error").textContent.length === 0) ) {
+        // This is the only acceptable condition of the errors's 'span' element
+        // If the 'length' property is 0, then there is no error with the input
+        // Hence, the results should be calculated
+        var results = calculateFinalGrade( score1, score2, score3 );
 
+        // Display the results
+        $("scoreTotal").value = results[0];
+        $("scoreFinal").value = results[1];
+    }
 
 };
 
