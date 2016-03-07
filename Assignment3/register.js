@@ -68,6 +68,7 @@ var resetForm = function() {
     $("country").nextElementSibling.firstChild.nodeValue = "*";	
     $("terms").nextElementSibling.firstChild.nodeValue = "*";
     $("email_address").focus();
+    $("mailing_address_label").className = $("mailing_address_input").className = "hide";
 
 };
 
