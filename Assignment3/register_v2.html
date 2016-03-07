@@ -3,6 +3,8 @@
     <head>
         <meta charset="utf-8">
         <title>Account Registration</title>
+
+        <!-- Link to the external CSS file  -->
         <link rel="stylesheet" type="text/css" href="register.css">
     </head>
 
@@ -26,7 +28,7 @@
                         <option>Mexico</option>
                     </select>
                     <span>*</span><br>
-                <label>Contact me by:</label>         
+                <label for="contact">Contact me by:</label>         
                     <input type="radio" name="contact" id="mail" value="mail">Mail
                     <input type="radio" name="contact" id="email" value="email" checked>Email
                     <input type="radio" name="contact" id="mobile" value="mobile">Mobile phone
@@ -36,11 +38,11 @@
                 <label for="mailing_address" id="mailing_address_label" class="hide">Your mailing address:</label>
                 <textarea name="mailing_address" id="mailing_address_input" class="hide"></textarea><br>
         		
-                <label>Terms of Service:</label>
+                <label for="terms">Terms of Service:</label>
                     <input type="checkbox" name="terms" id="terms" value="yes">I accept
                     <span>*</span><br>
 
-                <label>Comments:</label>
+                <label for="comments">Comments:</label>
                 <textarea name="comments"></textarea><br>
         				
         		<label>&nbsp;</label>
@@ -48,6 +50,8 @@
                 <input type="button" id="reset_form" value="Reset">
             </form>
         </main>
+
+        <!-- Link to the external JavaScript file -->
         <script type="text/javascript" src="register.js"></script>
     </body>
 </html>
