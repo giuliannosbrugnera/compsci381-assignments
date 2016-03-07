@@ -1,16 +1,22 @@
 "use strict";
 var $ = function(id) { return document.getElementById(id); };
 
+/*
+ * processEntries
+ * Process all the entries provided via standard input
+ * 
+ */
 var processEntries = function() {
 
     var isValid = true;
-    // get values for user entries   
+    
+    // Get values from user entries   
     var email = $("email_address").value;
     var phone = $("phone").value;
     var country = $("country").value;
     var terms = $("terms").checked;
 
-    // check user entries for validity
+    // Check user entries for validity
     if ( email == "" ) {
         $("email_address").nextElementSibling.firstChild.nodeValue = "This field is required.";
         isValid = false;
@@ -49,6 +55,11 @@ var processEntries = function() {
 
 };
 
+/*
+ * resetForm
+ * Erases all the form information upon the 'reset_form' button click
+ * 
+ */
 var resetForm = function() {
 
     $("registration_form").reset();
@@ -86,12 +97,22 @@ function initRadioButtons() {
 /*
  * radioChanged
  * Event listener. Hides or show the label and text area that allow user to input 
- * mailing address, based on the 'checked' property of the 'mail' radio button
+ * mailing address, based on the 'checked' property of the 'mail' radio button. It also
+ * clears the text area
  *
  */
 function radioChanged() {
 
-    $("mailing_address_label").className = $("mailing_address_input").className = ($("mail").checked) ? "" : "hide";
+    var className;
+
+    if ( $("mail").checked ) {
+        className = $("mailing_address_input").value = "";
+    }
+    else {
+        className = "hide";
+    }
+
+    $("mailing_address_label").className = $("mailing_address_input").className = className;
 
 }
 
