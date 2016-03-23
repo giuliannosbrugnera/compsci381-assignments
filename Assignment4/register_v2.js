@@ -1,6 +1,10 @@
 "use strict";
 var $ = function(id) { return document.getElementById(id); };
 
+/*
+ * processEntries
+ * Process all the entries provided via standard input by the user
+ */
 var processEntries = function() {
 
     var isValid = true;
@@ -74,7 +78,7 @@ function radioChanged() {
 
     // Is mail button checked?
     if ( mail.checked ) {
-        hide ='';
+        hide = '';
     }
     else {
         hide = 'hide';
@@ -84,12 +88,16 @@ function radioChanged() {
     label.className = hide;
     text.className = hide; 
 
+    // If text input hidden, empty its contents
     if ( hide ) {
-        // If text input hidden, empty its contents
         text.value = '';
     }
 }
 
+/*
+ * resetForm
+ * Erases all the form information upon the 'reset_form' button click
+ */
 var resetForm = function() {
 
     $("registration_form").reset();
@@ -113,4 +121,26 @@ window.onload = function() {
 
 };
 
-//Add JavaScript code to access local storage
+/*
+ * populateStorage
+ * Save data items into local storage
+ */
+function populateStorage() {
+
+    localStorage.setItem('email', $('email_address').value);
+    localStorage.setItem('phone', $('phone').value);
+    localStorage.setItem('country', $('country').value);
+
+    // Loop through radios
+    for ( var i = 0; i < options.length; i++ ) {
+        if ( options[i].checked ) {
+            localStorage.setItem('contact', options[i].value);
+            break;
+        }
+    }
+
+    localStorage.setItem('mailingAddress', $('mailingAddress').value);
+    localStorage.setItem('terms', $('terms').checked);
+    localStorage.setItem('comments', $('comments').checked);
+
+}
