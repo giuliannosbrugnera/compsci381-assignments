@@ -21,8 +21,22 @@ for ( var i = 0; i < options.length; i++ ) {
     }
 }
 
+// Set up event listeners to call populateStorage() on change
+// Get form
 var form = $('registration_form');
 
+if ( form.addEventListener ) {
+    // If event listeners work, add listener on change
+    form.addEventListener('change', function(e) {
+        populateStorage(e);
+    }, false);
+}
+else {
+    // Otherwise, use old IE model: onchange
+    form.attachEvent('onchange', function(e) {
+        populateStorage(e);
+    });
+}
 
 /*
  * processEntries
@@ -117,11 +131,21 @@ var resetForm = function() {
 
 };
 
+// Check whether there is any data item in web page that has been stored in localStorage or not 
+if ( !localStorage.getItem('email') ) {
+    // If localStorage was empty, then write data into it
+    populateStorage();
+}
+else {
+    // If there is any data item has been stored, then retrieve data from local storage
+    retrieveData();
+}
+
 /*
  * populateStorage
  * Save data items into local storage
  */
-function populateStorage() {
+function populateStorage( event ) {
 
     localStorage.setItem('email', $('email_address').value);
     localStorage.setItem('phone', $('phone').value);
