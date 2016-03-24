@@ -27,14 +27,14 @@ var form = $('registration_form');
 
 if ( form.addEventListener ) {
     // If event listeners work, add listener on change
-    form.addEventListener('change', function(e) {
-        populateStorage(e);
+    form.addEventListener('change', function() {
+        populateStorage();
     }, false);
 }
 else {
     // Otherwise, use old IE model: onchange
-    form.attachEvent('onchange', function(e) {
-        populateStorage(e);
+    form.attachEvent('onchange', function() {
+        populateStorage();
     });
 }
 
@@ -77,7 +77,7 @@ var processEntries = function() {
         $("country").nextElementSibling.firstChild.nodeValue = "";	
     }
 
-    if ( terms == false ) {
+    if ( !terms ) {
         $("terms").nextElementSibling.firstChild.nodeValue = "This box must be checked.";
         isValid = false;
     }
@@ -145,7 +145,7 @@ else {
  * populateStorage
  * Save data items into local storage
  */
-function populateStorage( event ) {
+function populateStorage() {
 
     localStorage.setItem('email', $('email_address').value);
     localStorage.setItem('phone', $('phone').value);
@@ -161,7 +161,7 @@ function populateStorage( event ) {
 
     localStorage.setItem('mailingAddress', $('mailingAddress').value);
     localStorage.setItem('terms', $('terms').checked);
-    localStorage.setItem('comments', $('comments').checked);
+    localStorage.setItem('comments', $('comments').value);
 
 }
 
