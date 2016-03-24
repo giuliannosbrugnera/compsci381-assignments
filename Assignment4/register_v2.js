@@ -113,14 +113,6 @@ var resetForm = function() {
 
 };
 
-window.onload = function() {
-
-    $("register").onclick = processEntries;
-    $("reset_form").onclick = resetForm;    
-    $("email_address").focus();
-
-};
-
 /*
  * populateStorage
  * Save data items into local storage
@@ -144,3 +136,36 @@ function populateStorage() {
     localStorage.setItem('comments', $('comments').checked);
 
 }
+
+/*
+ * retrieveData
+ * Retrieve data items from local storage and put data back into the web page
+ */
+function retrieveData() {
+    
+    $('email_address').value = localStorage.getItem('email');
+    $('phone').value = localStorage.getItem('phone');
+    $('country').value = localStorage.getItem('country');
+
+    var contact = localStorage.getItem('contact');
+
+    // Loop through radios. Check the last checked option
+    for ( var i = 0; i < options.length; i++ ) {
+        if ( options[i].value === contact ) {
+            options[i].checked = true;
+        }
+    }
+
+    $('mailingAddress').value = localStorage.getItem('mailingAddress');
+    $('terms').value = localStorage.getItem('terms');
+    $('comments').value = localStorage.getItem('comments');
+
+}
+
+window.onload = function() {
+
+    $("register").onclick = processEntries;
+    $("reset_form").onclick = resetForm;    
+    $("email_address").focus();
+
+};
