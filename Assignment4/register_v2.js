@@ -184,8 +184,11 @@ function retrieveData() {
         }
     }
 
+    // Necessary in the case of if the mail radio was selected, then show the mailing addresss
+    radioChanged();
+
     $('mailingAddress').value = localStorage.getItem('mailingAddress');
-    $('terms').value = localStorage.getItem('terms');
+    $('terms').checked = (localStorage.getItem('terms') === "true") ? true : false;
     $('comments').value = localStorage.getItem('comments');
 
 }
