@@ -109,7 +109,8 @@ var resetForm = function() {
     $("terms").nextElementSibling.firstChild.nodeValue = "*";
     $("email_address").focus();
 
-    //remove saved data from local storage as well
+    // Remove saved data from local storage as well
+    deleteStorage();
 
 };
 
@@ -159,6 +160,22 @@ function retrieveData() {
     $('mailingAddress').value = localStorage.getItem('mailingAddress');
     $('terms').value = localStorage.getItem('terms');
     $('comments').value = localStorage.getItem('comments');
+
+}
+
+/*
+ * deleteStorage
+ * Delete all saved data from the local storage
+ */
+function deleteStorage() {
+    
+    localStorage.removeItem('email');
+    localStorage.removeItem('phone');
+    localStorage.removeItem('country');
+    localStorage.removeItem('contact');
+    localStorage.removeItem('mailingAddress');
+    localStorage.removeItem('terms');
+    localStorage.removeItem('comments');
 
 }
 
