@@ -1,6 +1,29 @@
 "use strict";
 var $ = function(id) { return document.getElementById(id); };
 
+var options, mail, label, text, hide; // Declare variables
+options = document.getElementsByName('contact'); // Get the radio buttons
+mail = $('mail'); 
+label = $('label'); // the mail radio button and its label
+text = $('mailingAddress');
+label.className = 'hide'; // Hide label for that mailing address textarea
+text.className = 'hide'; // Hide mailing address textarea
+
+// Loop through radios
+for ( var i = 0; i < options.length; i++ ) {
+    if ( options[i].addEventListener ) {
+        // Add event listener if event listener supported
+        options[i].addEventListener('click', radioChanged);
+    }
+    else {
+        // Otherwise; IE fallback: onclick
+        options[i].attachEvent('onclick', radioChanged);
+    }
+}
+
+var form = $('registration_form');
+
+
 /*
  * processEntries
  * Process all the entries provided via standard input by the user
@@ -54,26 +77,6 @@ var processEntries = function() {
 
 };
 
-var options, mail, label, text, hide; // Declare variables
-options = document.getElementsByName('contact'); // Get the radio buttons
-mail = $('mail'); 
-label = $('label'); // the mail radio button and its label
-text = $('mailingAddress');
-label.className = 'hide'; // Hide label for that mailing address textarea
-text.className = 'hide'; // Hide mailing address textarea
-
-// Loop through radios
-for ( var i = 0; i < options.length; i++ ) {
-    if ( options[i].addEventListener ) {
-        // Add event listener if event listener supported
-        options[i].addEventListener('click', radioChanged);
-    }
-    else {
-        // Otherwise; IE fallback: onclick
-        options[i].attachEvent('onclick', radioChanged);
-    }
-}
-
 function radioChanged() {
 
     // Is mail button checked?
@@ -110,7 +113,7 @@ var resetForm = function() {
     $("email_address").focus();
 
     // Remove saved data from local storage as well
-    deleteStorage();
+    localStorage.clear();
 
 };
 
@@ -160,22 +163,6 @@ function retrieveData() {
     $('mailingAddress').value = localStorage.getItem('mailingAddress');
     $('terms').value = localStorage.getItem('terms');
     $('comments').value = localStorage.getItem('comments');
-
-}
-
-/*
- * deleteStorage
- * Delete all saved data from the local storage
- */
-function deleteStorage() {
-    
-    localStorage.removeItem('email');
-    localStorage.removeItem('phone');
-    localStorage.removeItem('country');
-    localStorage.removeItem('contact');
-    localStorage.removeItem('mailingAddress');
-    localStorage.removeItem('terms');
-    localStorage.removeItem('comments');
 
 }
 
