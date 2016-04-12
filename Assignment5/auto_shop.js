@@ -43,15 +43,17 @@ for (var i = 0; i < car_list.length; i++) {
     newTrElement.id = 'l-' + i;
 
     // add car info and Add button to each new table row
-    newTrElement.innerHTML = car_list[i].display() + '<td><button class="btn btn-primary add">Add</button></td>';
+    newTrElement.innerHTML = car_list[i].display() + '<td><button class="btn btn-primary add-item" value="' + i + '">Add</button></td>';
 
     // attach new table row to the car-list table
     document.getElementById('car-list').appendChild(newTrElement);
 }
 
-/* attach an event handler to all the Add buttons*/
-
-
+/* attach an event handler to all the Add buttons with a class 'add-item' */
+var elements = document.getElementsByClassName('add-item'); //returns an array
+for (var i = 0; i < elements.length; i++) {
+    elements[i].onclick = addItem;
+}
 
 // define an array to hold the index of the car added to the shopping chart
 var cart = [];
@@ -84,8 +86,8 @@ function addNewItemtoCart(item) {
     // append it to the new tr element
     newTrElement.appendChild(newTdElement);
 
-    // create a <td> element using item.model as content
-    newTdElement = createNewTdElement(item.model);
+    // create a <td> element using item.price as content
+    newTdElement = createNewTdElement(item.price);
     // append it to the new tr element
     newTrElement.appendChild(newTdElement);
 
