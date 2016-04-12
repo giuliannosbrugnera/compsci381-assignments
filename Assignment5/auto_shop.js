@@ -138,9 +138,32 @@ function displayMinivan() {
 
 
 /*add script code below to attach an event handler to the display invoice button*/
-
+$('p4').addEventListener('click', displayInvoice);
 
 /* define displayInvoice function */
 function displayInvoice() {
+    if (cart.length === 0) {
+        alert("Your cart is empty!");
+    } else {
+        var length = cart.length;
+        var subtotal = 0;
 
+        // Iterate through each item of the cart
+        for (var i = 0; i < length; i++) {
+            var car_index = cart[i];
+            subtotal += car_list[car_index].price;
+        }
+
+        // Calculate the values
+        var taxes = subtotal * 0.06;
+        var registration = subtotal * 0.05;
+        var total = subtotal + taxes + registration;
+
+        // Show the values
+        $('total-items').textContent = length;
+        $('sub-total').textContent = subtotal.toFixed(2);
+        $('taxes').textContent = taxes.toFixed(2);
+        $('registration').textContent = registration.toFixed(2);
+        $('total').textContent = total.toFixed(2);
+    }
 }
