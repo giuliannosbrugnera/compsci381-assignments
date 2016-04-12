@@ -41,10 +41,12 @@ for (var i = 0; i < car_list.length; i++) {
     var newTrElement = document.createElement('tr');
     newTrElement.class = 'car-item';
     newTrElement.id = 'l-' + i;
-    newTrElement.innerHTML = ; //add car info and Add button to each new table row
 
-    //attach new table row to the car-list table
+    // add car info and Add button to each new table row
+    newTrElement.innerHTML = car_list[i].display() + '<td><button class="btn btn-primary add">Add</button></td>';
 
+    // attach new table row to the car-list table
+    document.getElementById('car-list').appendChild(newTrElement);
 }
 
 /* attach an event handler to all the Add buttons*/
@@ -73,19 +75,19 @@ function addNewItemtoCart(item) {
     var newTrElement = document.createElement('tr');
 
     // create a <td> element using item.make as content
-
+    var newTdElement = createNewTdElement(item.make);
     // append it to the new tr element
-
+    newTrElement.appendChild(newTdElement);
 
     // create a <td> element using item.model as content
-
+    newTdElement = createNewTdElement(item.model);
     // append it to the new tr element
+    newTrElement.appendChild(newTdElement);
 
-
-    // create a <td> element using item.price as content
-
+    // create a <td> element using item.model as content
+    newTdElement = createNewTdElement(item.model);
     // append it to the new tr element
-
+    newTrElement.appendChild(newTdElement);
 
     //append new <tr> element to the shopping cart
     document.getElementById('mycart').appendChild(newTrElement);
