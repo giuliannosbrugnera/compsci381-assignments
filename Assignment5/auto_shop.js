@@ -1,3 +1,7 @@
+var $ = function(id) {
+    return document.getElementById(id);
+};
+
 // Define a car object using a constructor function
 function Car(id, car_make, car_model, car_year, car_type, car_color, car_price, car_mileage) {
     this.stockid = id;
@@ -46,7 +50,7 @@ for (var i = 0; i < car_list.length; i++) {
     newTrElement.innerHTML = car_list[i].display() + '<td><button class="btn btn-primary add-item" value="' + i + '">Add</button></td>';
 
     // attach new table row to the car-list table
-    document.getElementById('car-list').appendChild(newTrElement);
+    $('car-list').appendChild(newTrElement);
 }
 
 /* attach an event handler to all the Add buttons with a class 'add-item' */
@@ -92,7 +96,7 @@ function addNewItemtoCart(item) {
     newTrElement.appendChild(newTdElement);
 
     //append new <tr> element to the shopping cart
-    document.getElementById('mycart').appendChild(newTrElement);
+    $('mycart').appendChild(newTrElement);
 }
 
 function createNewTdElement(cell_content) {
@@ -112,11 +116,24 @@ function createNewTdElement(cell_content) {
 }
 
 /* add script code below to attach an event handler to the display minivan button*/
-
+$('p2').addEventListener('click', displayMinivan);
 
 /* define displayMinivan function */
 function displayMinivan() {
+    for (var i = 0; i < car_list.length; i++) {
+        if (car_list[i].type === "Minivan") {
+            //create a new <tr> element: a table row
+            var newTrElement = document.createElement('tr');
+            newTrElement.class = 'minivan-item';
+            newTrElement.id = 'minivan-' + i;
 
+            // add car info
+            newTrElement.innerHTML = car_list[i].display();
+
+            // attach new table row to the minivan-list table
+            $('minivan-list').appendChild(newTrElement);
+        }
+    }
 }
 
 
