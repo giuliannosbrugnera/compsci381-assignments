@@ -1,76 +1,106 @@
 <!doctype html>
 <html>
+
 <head>
-	<meta charset="utf-8">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Auto Shop - Used Cars</title>
-
     <!-- Bootstrap -->
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
-
-	<style>
-
-		 td{ padding: 5px; margin: 5px;}
-		.addme { height: 28px; width: 80px; padding: 0; }
-		.clm-label { background: #333; color: #fff;}
-		
-	</style>
+    <style>
+    td {
+        padding: 5px;
+        margin: 5px;
+    }
+    
+    .addme {
+        height: 28px;
+        width: 80px;
+        padding: 0;
+    }
+    
+    .clm-label {
+        background: #333;
+        color: #fff;
+    }
+    </style>
 </head>
+
 <body class='container'>
-<div class='row' >
-	<div class='col-md-9 '  >
-	   <h2>Car List</h2>
-		<table class='table table-bordered' id='car-list'>
-		<tr class='clm-label'>
-		   <th class='clm-label'>Stock ID</th>
-		   <th class='clm-label'>Make</th>
-		   <th class='clm-label'>Model</th>
-		   <th class='clm-label'>Year</th>
-		   <th class='clm-label'>Type</th>
-		   <th class='clm-label'>Color</th>
-		   <th class='clm-label'>Price</th>
-		   <th class='clm-label'>Mileage</th>
-		   <th class='clm-label'>Select</th>
-		 </tr>  
-		</table>
-	</div>
-	<div class='col-md-3'>
-		<h2>Shopping Cart</h2>
-		<table class='table table-bordered' id='mycart'>
-			<tr>
-				<td class='clm-label'>Make</td><td class='clm-label'>Model</td><td class='clm-label'>Price</td>
-			</tr>
-		</table>
-	</div>
-</div>
-<div class='col-md-9'>
-<p style='float: right;'><button id='p2' class='btn btn-primary' >Display all Minivans</button></p>
-  <table class='table table-bordered' id='minivan-list'>
-		<tr class='clm-label'>
-		  <th class='clm-label'>Stock ID</th>
-		  <th class='clm-label'>Make</th>
-		  <th class='clm-label'>Model</th>
-		  <th class='clm-label'>Year</th>
-		  <th class='clm-label'>Type</th>
-		  <th class='clm-label'>Color</th>
-		  <th class='clm-label'>Price</th>
-		  <th class='clm-label'>Mileage</th>
-		  <th class='clm-label'>Select</th>
-		</tr>
-  </table>
-</div>
-<div class='col-md-9'>
-<p style='float: right;'><button id='p4' class='btn btn-primary'>Display Invoice</button></p>
-<table class='table' >
-<tr><td class='col-xs-4'>Total number of cars: </td><td class='col-xs-2' id='total-items'>0</td></tr>
-<tr><td class='col-xs-4'>Subtotal: </td><td class='col-xs-2' id='sub-total'>0</td></tr>
-<tr><td class='col-xs-4'>Taxes (6%): </td><td class='col-xs-2' id='taxes'>0</td></tr>
-<tr><td class='col-xs-4'>Registration fee (5%): </td><td class='col-xs-2' id='registration'>0</td></tr>
-<tr><td class='col-xs-4'>Total due: </td><td class='col-xs-2' id='total'>0</td></tr>
-</table>
-</div>
-
+    <div class='row'>
+        <div class='col-md-9 '>
+            <h2>Car List</h2>
+            <table class='table table-bordered' id='car-list'>
+                <tr class='clm-label'>
+                    <th class='clm-label'>Stock ID</th>
+                    <th class='clm-label'>Make</th>
+                    <th class='clm-label'>Model</th>
+                    <th class='clm-label'>Year</th>
+                    <th class='clm-label'>Type</th>
+                    <th class='clm-label'>Color</th>
+                    <th class='clm-label'>Price</th>
+                    <th class='clm-label'>Mileage</th>
+                    <th class='clm-label'>Select</th>
+                </tr>
+            </table>
+        </div>
+        <div class='col-md-3'>
+            <h2>Shopping Cart</h2>
+            <table class='table table-bordered' id='mycart'>
+                <tr>
+                    <td class='clm-label'>Make</td>
+                    <td class='clm-label'>Model</td>
+                    <td class='clm-label'>Price</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class='col-md-9'>
+        <p style='float: right;'>
+            <button id='p2' class='btn btn-primary'>Display all Minivans</button>
+        </p>
+        <table class='table table-bordered' id='minivan-list'>
+            <tr class='clm-label'>
+                <th class='clm-label'>Stock ID</th>
+                <th class='clm-label'>Make</th>
+                <th class='clm-label'>Model</th>
+                <th class='clm-label'>Year</th>
+                <th class='clm-label'>Type</th>
+                <th class='clm-label'>Color</th>
+                <th class='clm-label'>Price</th>
+                <th class='clm-label'>Mileage</th>
+                <th class='clm-label'>Select</th>
+            </tr>
+        </table>
+    </div>
+    <div class='col-md-9'>
+        <p style='float: right;'>
+            <button id='p4' class='btn btn-primary'>Display Invoice</button>
+        </p>
+        <table class='table'>
+            <tr>
+                <td class='col-xs-4'>Total number of cars: </td>
+                <td class='col-xs-2' id='total-items'>0</td>
+            </tr>
+            <tr>
+                <td class='col-xs-4'>Subtotal: </td>
+                <td class='col-xs-2' id='sub-total'>0</td>
+            </tr>
+            <tr>
+                <td class='col-xs-4'>Taxes (6%): </td>
+                <td class='col-xs-2' id='taxes'>0</td>
+            </tr>
+            <tr>
+                <td class='col-xs-4'>Registration fee (5%): </td>
+                <td class='col-xs-2' id='registration'>0</td>
+            </tr>
+            <tr>
+                <td class='col-xs-4'>Total due: </td>
+                <td class='col-xs-2' id='total'>0</td>
+            </tr>
+        </table>
+    </div>
 </body>
-</html>
 
+</html>
