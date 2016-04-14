@@ -43,7 +43,7 @@ car_list.push(new Car(4002, "Audi", "R8", 2012, "convertible", "Black", 181370, 
 for (var i = 0; i < car_list.length; i++) {
     //create a new <tr> element: a table row
     var newTrElement = document.createElement('tr');
-    newTrElement.class = 'car-item';
+    newTrElement.className = 'car-item';
     newTrElement.id = 'l-' + i;
 
     // add car info and Add button to each new table row
@@ -124,7 +124,7 @@ function displayMinivan() {
         if (car_list[i].type === "Minivan") {
             //create a new <tr> element: a table row
             var newTrElement = document.createElement('tr');
-            newTrElement.class = 'minivan-item';
+            newTrElement.className = 'minivan-item';
             newTrElement.id = 'minivan-' + i;
 
             // add car info
