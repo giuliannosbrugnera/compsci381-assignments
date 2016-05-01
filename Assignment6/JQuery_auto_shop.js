@@ -224,7 +224,11 @@ $(document).ready(function() {
         //step 3(e): add script code to retrieve the index of selected car and then 
         //update the ordering quantity of selected car.  
 
+        console.log("Value is updated to " + value);
+        console.log("input id is: " + input.id);
 
+        var index = parseInt(input.id);
+        car_list[index].qty = value;
     }
 
     /*****************************/
