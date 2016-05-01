@@ -213,7 +213,7 @@ $(document).ready(function() {
             elm += "Your cart is empty.";
         }
         //step 3(d): add a jQuery selector 
-        $().html(elm); // modify the table
+        $('#mycart tbody').html(elm); // modify the table
     }
     /*****************************/
     /* updateCartItemQty()       */
