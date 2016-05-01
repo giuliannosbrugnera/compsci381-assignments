@@ -278,6 +278,7 @@ $(document).ready(function() {
         */
         //step 3(f): add script to update the ordering quantity of selected car and use splice method to 
         //remove that selected car from the shopping cart.
-
+        car_list[cart[index]].qty = 0;
+        cart.splice(index, 1);
     }
 });
