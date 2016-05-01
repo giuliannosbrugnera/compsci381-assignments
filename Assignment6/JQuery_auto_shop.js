@@ -2,27 +2,27 @@
 
 // Define a car object using a constructor function
 function Car(id, car_make, car_model, car_year, car_type, car_color, car_price, car_mileage) {
-	this.stockid = id;
-	this.make = car_make;
-	this.model = car_model;
-	this.year = car_year;
-	this.type = car_type;
-	this.color = car_color;
-	this.price = car_price;
-	this.mileage = car_mileage;
-	//Step-2(b): add a property to store ordering quantity of a car
-	this.display = function(){
-		var this_str = "<td>" + this.stockid + "</td><td>" + this.make + "</td>";
-		this_str += "<td>" + this.model + "</td><td>" + this.year + "</td><td>" + this.type + "</td>";
-		this_str += "<td>" + this.color + "</td><td>$" + this.price + "</td>";
-		this_str += "<td>" + this.mileage + "</td>";
-		
-		return this_str;
-	}
+    this.stockid = id;
+    this.make = car_make;
+    this.model = car_model;
+    this.year = car_year;
+    this.type = car_type;
+    this.color = car_color;
+    this.price = car_price;
+    this.mileage = car_mileage;
+    //Step-2(b): add a property to store ordering quantity of a car
+    this.display = function() {
+        var this_str = "<td>" + this.stockid + "</td><td>" + this.make + "</td>";
+        this_str += "<td>" + this.model + "</td><td>" + this.year + "</td><td>" + this.type + "</td>";
+        this_str += "<td>" + this.color + "</td><td>$" + this.price + "</td>";
+        this_str += "<td>" + this.mileage + "</td>";
+
+        return this_str;
+    }
 }
 
 // Declare an array of objects
-var car_list = [];  // var car_list = new Array();
+var car_list = []; // var car_list = new Array();
 
 // Create an instance of the Car object and add it to the car_list array
 car_list.push(new Car(1001, "Toyota", "Camry", 2011, "Sedan", "Gray", 17555, 55060));
@@ -46,8 +46,8 @@ car_list.push(new Car(4002, "Audi", "R8", 2012, "SUV", "Black", 181370, 4500));
 
 
 //define an array (global variable) to store indices of the items added to the shopping cart*/
- var cart = [];
- 
+var cart = [];
+
 /*
 	Event handlers cannot be added directly to elements that are created after the document is rendered by the browser.
 	The shopping cart is created dynamically by user interactions.
@@ -78,155 +78,153 @@ car_list.push(new Car(4002, "Audi", "R8", 2012, "SUV", "Black", 181370, 4500));
 
 /*****************************/
 /* displayDropdown()         */
-/*****************************/ 
-function displayDropdown(){
-	var currentCat = 'select';
-	var output = "<option value=\'"+ currentCat + "\'>Select a category to display</option>";
-	var addedCats = [];
+/*****************************/
+function displayDropdown() {
+    var currentCat = 'select';
+    var output = "<option value=\'" + currentCat + "\'>Select a category to display</option>";
+    var addedCats = [];
 
-//Step-3 (a): add script code here to add options to the drop down list
+    //Step-3 (a): add script code here to add options to the drop down list
 
 
- }
- 
+}
+
 /*****************************/
 /* displayListing()          */
-/*****************************/  
- function displayListing(cat){
-	var displayAll = false;
-	if (cat == "All") {
-		displayAll = true;
-	} 
-	if (cat == "select") {
-	  $('#car-list tbody').html("");
-	}
-	var body="";
-	
-   //add table body	
-   //step 3(b):Complete the displayListing function to display car list in the web page according to 
-   //users’ selection on car type
-   for(var i = 0; i < car_list.length; i++) {
-		if() {
-			var newTrElement = "<tr class=\'car-item\' id=\'l-\'>" +i;
+/*****************************/
+function displayListing(cat) {
+    var displayAll = false;
+    if (cat == "All") {
+        displayAll = true;
+    }
+    if (cat == "select") {
+        $('#car-list tbody').html("");
+    }
+    var body = "";
 
-		}
-	}
-	$().html(body);
- }
+    //add table body	
+    //step 3(b):Complete the displayListing function to display car list in the web page according to 
+    //users’ selection on car type
+    for (var i = 0; i < car_list.length; i++) {
+        if () {
+            var newTrElement = "<tr class=\'car-item\' id=\'l-\'>" + i;
+
+        }
+    }
+    $().html(body);
+}
 
 /****************/
 /* addQty()     */
 /****************/
 function addQty(index) {
-//step 3(c): add script code to update the ordering quantity of a selected car.
+    //step 3(c): add script code to update the ordering quantity of a selected car.
 
 }
 
 /*****************************/
 /* updateShoppingCart()      */
 /*****************************/
- function updateShoppingCart(){
+function updateShoppingCart() {
 
-//console.log("Cart array is currently: " + cart);
-	//display shopping cart	
-	displayCartItems();
+    //console.log("Cart array is currently: " + cart);
+    //display shopping cart	
+    displayCartItems();
 
-	// update total items
-	updateItemTotal();
+    // update total items
+    updateItemTotal();
 
-	//Update final checkout data
-	calculateCheckoutCost();
+    //Update final checkout data
+    calculateCheckoutCost();
 
- }
- 
- /**************************/
+}
+
+/**************************/
 /* displayCartItems()     */
 /**************************/
-function displayCartItems(){
-	/* use this method to display items in the shopping cart.
-	This method should  redisplay the 'shopping cart'
-	table when we add or delete items.*/
-	// add each product to shopping cart
-	var runError = true;
-	var elm='';
-	for (var i=0; i<cart.length; i++){
-			//create a table row and add stockId, make, cost, quantity, and type info of the selected cars to the cart table
-			elm += "<tr><td class=\'col-xs-1\'>"+ car_list[cart[i]].stockid + "</td>";
-			elm += "<td class=\'col-xs-1\'>"+ car_list[cart[i]].make + "</td>";
-			elm += "<td class=\'col-xs-1\'>"+ car_list[cart[i]].model + "</td>";
-			elm += "<td class=\'col-xs-1\'>"+ car_list[cart[i]].price + "</td>";
-			elm += "<td class=\'col-xs-1\'><input  type=\'text\' id=\'" + cart[i] + "\' name=\'qty-" + i +
-			"\' size=\'1\' value=\'"+ car_list[cart[i]].qty + "\'></td>";
-			elm += "<td class=\'col-xs-1\'>"+ car_list[cart[i]].type + "</td>";
-			elm += "<td class=\'col-xs-1\'><button type=\'button\' value=\'" + i + "\' class=\'delete-item\'>Delete</button></td></tr>";
-			runError = false; // = cart is not empty
-	}
-	if (runError) { //if cart is empty
-		elm += "Your cart is empty.";
-	}
-	//step 3(d): add a jQuery selector 
-	$().html(elm); // modify the table
+function displayCartItems() {
+    /* use this method to display items in the shopping cart.
+    This method should  redisplay the 'shopping cart'
+    table when we add or delete items.*/
+    // add each product to shopping cart
+    var runError = true;
+    var elm = '';
+    for (var i = 0; i < cart.length; i++) {
+        //create a table row and add stockId, make, cost, quantity, and type info of the selected cars to the cart table
+        elm += "<tr><td class=\'col-xs-1\'>" + car_list[cart[i]].stockid + "</td>";
+        elm += "<td class=\'col-xs-1\'>" + car_list[cart[i]].make + "</td>";
+        elm += "<td class=\'col-xs-1\'>" + car_list[cart[i]].model + "</td>";
+        elm += "<td class=\'col-xs-1\'>" + car_list[cart[i]].price + "</td>";
+        elm += "<td class=\'col-xs-1\'><input  type=\'text\' id=\'" + cart[i] + "\' name=\'qty-" + i +
+            "\' size=\'1\' value=\'" + car_list[cart[i]].qty + "\'></td>";
+        elm += "<td class=\'col-xs-1\'>" + car_list[cart[i]].type + "</td>";
+        elm += "<td class=\'col-xs-1\'><button type=\'button\' value=\'" + i + "\' class=\'delete-item\'>Delete</button></td></tr>";
+        runError = false; // = cart is not empty
+    }
+    if (runError) { //if cart is empty
+        elm += "Your cart is empty.";
+    }
+    //step 3(d): add a jQuery selector 
+    $().html(elm); // modify the table
 }
 /*****************************/
 /* updateCartItemQty()       */
 /*****************************/
- function updateCartItemQty(input) {
-	var value = 0;
-	value = parseInt($("#" + input.id).val());
-//step 3(e): add script code to retrieve the index of selected car and then 
-//update the ordering quantity of selected car.  
-	
-	
- }
+function updateCartItemQty(input) {
+    var value = 0;
+    value = parseInt($("#" + input.id).val());
+    //step 3(e): add script code to retrieve the index of selected car and then 
+    //update the ordering quantity of selected car.  
+
+
+}
 
 /*****************************/
 /* updateItemTotal()         */
 /*****************************/
- function updateItemTotal(){
-	// update the total items
-	var total = cart.length;
-	$('#items').text(total);
- } 
+function updateItemTotal() {
+    // update the total items
+    var total = cart.length;
+    $('#items').text(total);
+}
 
 /*******************************/
 /* calculateCheckoutCost()     */
 /*******************************/
-function calculateCheckoutCost(){
+function calculateCheckoutCost() {
 
-	//Display total number of cars in the cart 
-	var taxRate = 0.06;
-	var feeRate = 0.05;
-	var subtotal = 0;
-	var tax = 0;
-	var fee = 0;
-	var total = 0;
-	
-		//Calculate subtotal 
-	var subtotal = 0;
-	for (var i=0; i<cart.length; i++)
-	{
-		subtotal +=  parseFloat(car_list[cart[i]].price * car_list[cart[i]].qty);
-	}
-	$('#sub-total').text('$'+subtotal.toFixed(2));
-	tax = subtotal*taxRate;
-	$('#taxes').text('$'+tax.toFixed(2));
-	fee = subtotal*feeRate;
-	$('#registration').text('$'+fee.toFixed(2));		
-	total = subtotal + tax + fee;
-	$('#total').text('$'+total.toFixed(2));
-	 
+    //Display total number of cars in the cart 
+    var taxRate = 0.06;
+    var feeRate = 0.05;
+    var subtotal = 0;
+    var tax = 0;
+    var fee = 0;
+    var total = 0;
+
+    //Calculate subtotal 
+    var subtotal = 0;
+    for (var i = 0; i < cart.length; i++) {
+        subtotal += parseFloat(car_list[cart[i]].price * car_list[cart[i]].qty);
+    }
+    $('#sub-total').text('$' + subtotal.toFixed(2));
+    tax = subtotal * taxRate;
+    $('#taxes').text('$' + tax.toFixed(2));
+    fee = subtotal * feeRate;
+    $('#registration').text('$' + fee.toFixed(2));
+    total = subtotal + tax + fee;
+    $('#total').text('$' + total.toFixed(2));
+
 }
 
 /*****************************/
 /* deleteItemFromCart()      */
 /*****************************/
- function deleteItemFromCart(index){
-	/*  remove the element with a given index from the cart array and update shopping cart
-	 use splice() method, Syntax: array_name.splice(start, how many elements)
-	The splice() method removes elements starting from 'start' positions. The second arguments defines the number of elements to be removed.
-	*/
-   //step 3(f): add script to update the ordering quantity of selected car and use splice method to 
-   //remove that selected car from the shopping cart.
- 
+function deleteItemFromCart(index) {
+    /*  remove the element with a given index from the cart array and update shopping cart
+     use splice() method, Syntax: array_name.splice(start, how many elements)
+    The splice() method removes elements starting from 'start' positions. The second arguments defines the number of elements to be removed.
+    */
+    //step 3(f): add script to update the ordering quantity of selected car and use splice method to 
+    //remove that selected car from the shopping cart.
+
 });
- 
