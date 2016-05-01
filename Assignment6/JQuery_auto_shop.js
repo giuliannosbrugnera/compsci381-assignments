@@ -111,8 +111,21 @@ $(document).ready(function() {
         var addedCats = [];
 
         //Step-3 (a): add script code here to add options to the drop down list
+        for (var i = 0; i < car_list.length; i++) {
+            currentCat = car_list[i].category;
 
-
+            if (addedCats.indexOf(currentCat) == -1) {
+                addedCats.push(currentCat);
+                output += "<option value=\'" + currentCat + "\' class=\'cat-select\'>" + currentCat + "</option>";
+                console.log("added " + currentCat);
+            } else {
+                console.log("not added " + currentCat);
+            }
+            console.log(addedCats);
+        } // end for loop
+        currentCat = "All";
+        output += "<option value=\'" + currentCat + "\' class=\'cat-select\'>" + currentCat + "</option>";
+        $('#categorySelect').html(output);
     }
 
     /*****************************/
