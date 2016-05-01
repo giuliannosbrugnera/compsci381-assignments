@@ -67,7 +67,8 @@ $(document).ready(function() {
     //the selected cars’ information including stockid, make, model, price, quantity and type will be displayed 
     //in the shopping cart list on the web page, the number of items in the shopping cart as well as the Checkout 
     //invoice information including subtotal, tax, registration fee, and total amount will be updated.
-    $('#mainTable').on('click', '.add-item', function() {
+    //add event handler to the parent element (<table id="car-list"> element ) of the add buttons in the main table
+    $('#car-list').on('click', '.add-item', function() {
         var index = $(this).val();
         if (cart.indexOf(index) == -1) {
             cart.push(index);
@@ -81,8 +82,12 @@ $(document).ready(function() {
     //quantities of selected cars in the shopping list in the web page, 
     //the ordering quantities of selected cars the Checkout invoice information including subtotal, tax, registration fee,
     // and total amount will be updated. 
-
-
+    //add event handler to the parent element (<table id='mycart'> element ) of the input fields in the shopping cart table
+    //update cart item quantity when user updates the values in the quantity input fields 
+    $('#myCart').on('change', 'input', function() {
+        updateCartItemQty(this);
+        updateShoppingCart();
+    });
 
     //Step-2 (g):Apply event delegation technique to add event handler so that when users click Delete buttons 
     //the selected cars will be removed from the shopping cart and removed from the shopping cart list in the web page as well. 
