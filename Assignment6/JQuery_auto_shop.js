@@ -43,7 +43,7 @@ $(document).ready(function() {
 
 
     //Step-2 (c): call displayDropdown() function to set up the drop down selection list
-
+    displayDropdown();
 
     //Step-2 (d): add event handler to the drop down list
 
