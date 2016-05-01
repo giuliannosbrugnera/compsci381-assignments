@@ -46,7 +46,11 @@ $(document).ready(function() {
     displayDropdown();
 
     //Step-2 (d): add event handler to the drop down list
-
+    $('#categorySelect').on('change', function() {
+        var cat = $(this).val();
+        console.log(cat);
+        displayListing(cat);
+    });
 
     //define an array (global variable) to store indices of the items added to the shopping cart*/
     var cart = [];
