@@ -82,7 +82,7 @@ $(document).ready(function() {
     //quantities of selected cars in the shopping list in the web page, 
     //the ordering quantities of selected cars the Checkout invoice information including subtotal, tax, registration fee,
     // and total amount will be updated. 
-    //add event handler to the parent element (<table id='mycart'> element ) of the input fields in the shopping cart table
+    //add event handler to the parent element (<table id='mycart'> element) of the input fields in the shopping cart table
     //update cart item quantity when user updates the values in the quantity input fields 
     $('#myCart').on('change', 'input', function() {
         updateCartItemQty(this);
@@ -93,7 +93,13 @@ $(document).ready(function() {
     //the selected cars will be removed from the shopping cart and removed from the shopping cart list in the web page as well. 
     //Meanwhile, the number of items in the shopping cart as well as the Checkout invoice information including subtotal, tax, 
     //registration fee, and total amount will be updated.
-
+    //add event handler to the parent element (<table id='mycart'> element) of the delete buttons in the shopping cart table
+    $('#myCart').on('click', '.delete-item', function() {
+        var index = $(this).val();
+        console.log("Delete Item: " + index);
+        deleteItemFromCart(index);
+        updateShoppingCart();
+    });
 
 
     /*****************************/
