@@ -13,6 +13,7 @@ $(document).ready(function() {
         this.price = car_price;
         this.mileage = car_mileage;
         //Step-2(b): add a property to store ordering quantity of a car
+        this.qty = 0;
         this.display = function() {
             var this_str = "<td>" + this.stockid + "</td><td>" + this.make + "</td>";
             this_str += "<td>" + this.model + "</td><td>" + this.year + "</td><td>" + this.type + "</td>";
