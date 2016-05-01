@@ -112,7 +112,7 @@ $(document).ready(function() {
 
         //Step-3 (a): add script code here to add options to the drop down list
         for (var i = 0; i < car_list.length; i++) {
-            currentCat = car_list[i].category;
+            currentCat = car_list[i].type;
 
             if (addedCats.indexOf(currentCat) == -1) {
                 addedCats.push(currentCat);
@@ -145,12 +145,21 @@ $(document).ready(function() {
         //step 3(b):Complete the displayListing function to display car list in the web page according to 
         //users’ selection on car type
         for (var i = 0; i < car_list.length; i++) {
-            if () {
-                var newTrElement = "<tr class=\'car-item\' id=\'l-\'>" + i;
-
+            if (car_list[i].type == cat | displayAll == true) {
+                body += "<tr class=\'car-item\' id=\'l-\'>" + i + "\'>";
+                body += "<td>" + car_list[i].stockid + "</td>";
+                body += "<td>" + car_list[i].make + "</td>";
+                body += "<td>" + car_list[i].model + "</td>";
+                body += "<td>" + car_list[i].year + "</td>";
+                body += "<td>" + car_list[i].type + "</td>";
+                body += "<td>" + car_list[i].color + "</td>";
+                body += "<td>$" + car_list[i].price + "</td>";
+                body += "<td>" + car_list[i].mileage + "</td>";
+                body += "<td><button type=\'button\' value=\'" + i + "\' class=\'btn btn-primary add-item\'>Add</button><td>";
+                body += "</tr>";
             }
         }
-        $().html(body);
+        $('#car-list tbody').html(body);
     }
 
     /****************/
