@@ -67,7 +67,15 @@ $(document).ready(function() {
     //the selected cars’ information including stockid, make, model, price, quantity and type will be displayed 
     //in the shopping cart list on the web page, the number of items in the shopping cart as well as the Checkout 
     //invoice information including subtotal, tax, registration fee, and total amount will be updated.
-
+    $('#mainTable').on('click', '.add-item', function() {
+        var index = $(this).val();
+        if (cart.indexOf(index) == -1) {
+            cart.push(index);
+            console.log("Cart array is currently: " + JSON.stringify(cart));
+        }
+        addQty(index);
+        updateShoppingCart();
+    });
 
     //Step-2 (f): Apply event delegation technique to add event handler so that when users change the ordering 
     //quantities of selected cars in the shopping list in the web page, 
