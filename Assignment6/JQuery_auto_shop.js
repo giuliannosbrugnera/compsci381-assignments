@@ -84,7 +84,7 @@ $(document).ready(function() {
     // and total amount will be updated. 
     //add event handler to the parent element (<table id='mycart'> element) of the input fields in the shopping cart table
     //update cart item quantity when user updates the values in the quantity input fields 
-    $('#myCart').on('change', 'input', function() {
+    $('#mycart').on('change', 'input', function() {
         updateCartItemQty(this);
         updateShoppingCart();
     });
@@ -94,7 +94,7 @@ $(document).ready(function() {
     //Meanwhile, the number of items in the shopping cart as well as the Checkout invoice information including subtotal, tax, 
     //registration fee, and total amount will be updated.
     //add event handler to the parent element (<table id='mycart'> element) of the delete buttons in the shopping cart table
-    $('#myCart').on('click', '.delete-item', function() {
+    $('#mycart').on('click', '.delete-item', function() {
         var index = $(this).val();
         console.log("Delete Item: " + index);
         deleteItemFromCart(index);
@@ -174,8 +174,7 @@ $(document).ready(function() {
     /* updateShoppingCart()      */
     /*****************************/
     function updateShoppingCart() {
-
-        //console.log("Cart array is currently: " + cart);
+        console.log("Cart array is currently: " + cart);
         //display shopping cart 
         displayCartItems();
 
@@ -184,7 +183,6 @@ $(document).ready(function() {
 
         //Update final checkout data
         calculateCheckoutCost();
-
     }
 
     /**************************/
@@ -202,11 +200,11 @@ $(document).ready(function() {
             elm += "<tr><td class=\'col-xs-1\'>" + car_list[cart[i]].stockid + "</td>";
             elm += "<td class=\'col-xs-1\'>" + car_list[cart[i]].make + "</td>";
             elm += "<td class=\'col-xs-1\'>" + car_list[cart[i]].model + "</td>";
-            elm += "<td class=\'col-xs-1\'>" + car_list[cart[i]].price + "</td>";
-            elm += "<td class=\'col-xs-1\'><input  type=\'text\' id=\'" + cart[i] + "\' name=\'qty-" + i +
+            elm += "<td class=\'col-xs-1\'>$" + car_list[cart[i]].price + "</td>";
+            elm += "<td class=\'col-xs-1\'><input  type=\'text\' class=\'form-control\' id=\'" + cart[i] + "\' name=\'qty-" + i +
                 "\' size=\'1\' value=\'" + car_list[cart[i]].qty + "\'></td>";
             elm += "<td class=\'col-xs-1\'>" + car_list[cart[i]].type + "</td>";
-            elm += "<td class=\'col-xs-1\'><button type=\'button\' value=\'" + i + "\' class=\'delete-item\'>Delete</button></td></tr>";
+            elm += "<td class=\'col-xs-1\'><button type=\'button\' value=\'" + i + "\' class=\'delete-item btn btn-danger\'>Delete</button></td></tr>";
             runError = false; // = cart is not empty
         }
         if (runError) { //if cart is empty
