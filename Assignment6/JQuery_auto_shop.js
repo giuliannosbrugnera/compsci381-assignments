@@ -167,7 +167,7 @@ $(document).ready(function() {
     /****************/
     function addQty(index) {
         //step 3(c): add script code to update the ordering quantity of a selected car.
-
+        car_list[index].qty++;
     }
 
     /*****************************/
